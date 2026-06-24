@@ -1,0 +1,45 @@
+plugins {
+  alias(libs.plugins.android.application)
+}
+
+android {
+  namespace 'com.vr.conscrypttest'
+  compileSdk 36
+
+  defaultConfig {
+    applicationId "com.vr.conscrypttest"
+    minSdk 17
+    targetSdk 33
+    multiDexEnabled true
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      multiDexEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+
+    debug {
+      minifyEnabled false
+      multiDexEnabled true
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  implementation libs.material
+    implementation 'com.squareup.okhttp3:okhttp:3.12.13'
+    implementation 'org.conscrypt:conscrypt-android:2.5.2'
+  testImplementation libs.junit
+  androidTestImplementation libs.ext.junit
+  androidTestImplementation libs.espresso.core
+}
